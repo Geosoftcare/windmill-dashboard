@@ -1,0 +1,10 @@
+<div class="mt-4 text-sm">
+            <div class="mt-2">
+              <label class="inline-flex items-center text-gray-600 dark:text-gray-400">
+                <img src="files/geocare/images/clientsIcon.png" alt="User Profile" style="width: 100px; height:100px; border-radius: 100%;" class="img-round" />
+              </label>
+              <label class="inline-flex items-center ml-6 text-gray-600 dark:text-gray-400">
+                <img src="files/geocare/images/clientsIcon.png" alt="User Profile" style="width: 100px; height:100px; border-radius: 100%;" class="img-round" />
+              </label>
+            </div>
+          </div>

@@ -1,0 +1,12 @@
+#title-Base-txt {
+    display: flex;
+    width: 100%;
+    color: rgba(127, 140, 141,1.0);
+    font-size: 12px;
+}
+
+#body-Base-txt {
+    display: flex;
+    width: 100%;
+    font-size: 15px;
+}
