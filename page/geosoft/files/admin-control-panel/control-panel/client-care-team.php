@@ -1,15 +1,10 @@
-<?php include('client-header-contents.php'); ?>
-
-
-
 <?php
+include('client-header-contents.php');
 if (isset($_GET['uryyToeSS4'])) {
     $uryyToeSS4 = $_GET['uryyToeSS4'];
-    //change this line in your query as well
     $result = mysqli_query($conn, "SELECT * FROM tbl_general_client_form WHERE uryyToeSS4='$uryyToeSS4'");
     while ($row = mysqli_fetch_array($result)) {
 ?>
-
 
         <!-- [ Main Content ] start -->
         <div class="pcoded-main-container">

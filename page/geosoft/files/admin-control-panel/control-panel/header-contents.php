@@ -21,8 +21,6 @@
     <script src="./fullcalendar/lib/main.min.js"></script>
     <!-- vendor css -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- *Note: You must have internet connection on your laptop or pc other wise below code is not working -->
-    <!-- CSS for full calender -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js" type="text/javascript"></script>
     <!-- JS for jQuery -->

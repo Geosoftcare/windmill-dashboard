@@ -100,22 +100,22 @@ if ($varGetAllData == $varCookieCity) {
         $search = mysqli_real_escape_string($conn, $_POST["query"]);
         $query = "
         SELECT t1.userId, t1.client_first_name, t1.client_last_name, t1.client_primary_phone, t1.client_poster_code, t1.client_city, 
-        t1.client_sexuality, t1.client_preferred_name, t1.client_date_of_birth, t1.client_area, t1.uryyToeSS4, t1.col_company_Id, t2.col_reason, t2.col_status_color 
+        t1.client_sexuality, t1.client_preferred_name, t1.client_date_of_birth, t1.client_area, t1.col_Office_Incharge, t1.uryyToeSS4, t1.col_company_Id, t2.col_reason, t2.col_status_color 
         FROM tbl_general_client_form t1
         LEFT JOIN tbl_client_status_records t2 
         ON 
             t1.uryyToeSS4 = t2.col_client_Id AND ((CURDATE() BETWEEN t2.col_start_date AND t2.col_end_date) OR (t2.col_start_date <= '$today' 
-            AND t2.col_end_date = 'TFN')) WHERE (t1.client_city = '" . $varCookieCity . "' AND t1.client_first_name LIKE '%" . $search . "%' OR t1.client_last_name LIKE '%" . $search . "%') ";
+            AND t2.col_end_date = 'TFN')) WHERE (t1.col_Office_Incharge = '" . $varCookieCity . "' AND t1.client_first_name LIKE '%" . $search . "%' OR t1.client_last_name LIKE '%" . $search . "%') ";
     } else {
         $query = "
     SELECT t1.userId, t1.client_first_name, t1.client_last_name, t1.client_primary_phone, 
            t1.client_poster_code, t1.client_sexuality, t1.client_preferred_name, 
-           t1.client_date_of_birth, t1.client_area, t1.uryyToeSS4, t1.col_company_Id, 
+           t1.client_date_of_birth, t1.client_area, t1.col_Office_Incharge, t1.uryyToeSS4, t1.col_company_Id, 
            t2.col_reason, t2.col_status_color, t2.col_end_date 
     FROM tbl_general_client_form t1
     LEFT JOIN tbl_client_status_records t2 
     ON t1.uryyToeSS4 = t2.col_client_Id AND ((CURDATE() BETWEEN t2.col_start_date AND t2.col_end_date) OR (t2.col_start_date <= '$today' 
-            AND t2.col_end_date = 'TFN')) WHERE t1.client_city = '" . $varCookieCity . "' AND t1.col_company_Id = '" . $_SESSION['usr_compId'] . "'
+            AND t2.col_end_date = 'TFN')) WHERE t1.col_Office_Incharge = '" . $varCookieCity . "' AND t1.col_company_Id = '" . $_SESSION['usr_compId'] . "'
     AND ((t2.col_reason NOT IN ('Deceased', 'Left Service', 'Hospitalized', 'Inactive', 'Holiday', 'With family', 'Permanent', 'Other') OR t2.col_reason IS NULL)
     )
     ORDER BY t1.client_first_name ASC;

@@ -56,7 +56,8 @@
                                     <select style="height:50px;" name="txtTeamStatus" class="form-control" required id="">
                                         <option value="--Select options--">--Select options--</option>
                                         <option value="Active">Active</option>
-                                        <option value="Left Service">Left Service</option>
+                                        <option value="Resigned">Resigned</option>
+                                        <option value="Terminated">Terminated</option>
                                         <option value="Deceased">Deceased</option>
                                         <option value="Inactive">Inactive</option>
                                         <option value="Hospitalized">Hospitalized</option>

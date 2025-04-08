@@ -12,16 +12,37 @@ if ($varGetAllData == $varCookieCity) {
     if (isset($_POST["query"])) {
         $search = mysqli_real_escape_string($conn, $_POST["query"]);
         $query = "
-        SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, c.col_company_city, c.col_company_Id, c.team_nationality, c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
-        FROM tbl_general_team_form c LEFT JOIN tbl_team_status a ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 AND a.col_approval = 'Approved' AND CURDATE() BETWEEN a.col_startDate AND a.col_endDate 
-        WHERE (a.uryyTteamoeSS4 IS NULL AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
-        AND c.team_first_name LIKE '%" . $search . "%' OR c.team_last_name LIKE '%" . $search . "%' OR c.team_middle_name LIKE '%" . $search . "%');
+        SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, 
+           c.col_company_city, c.col_company_Id, c.team_nationality, 
+           c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
+    FROM tbl_general_team_form c 
+    LEFT JOIN tbl_team_status a 
+        ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 
+        AND a.col_approval = 'Approved'
+        AND a.col_startDate < CURDATE() 
+        AND (a.col_endDate > CURDATE() OR a.col_endDate = 'TFN')
+    WHERE a.uryyTteamoeSS4 IS NULL 
+    AND c.col_company_city = '" . $_COOKIE["companyCity"] . "' 
+    AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
+    AND (c.team_first_name LIKE '%" . $search . "%' 
+        OR c.team_last_name LIKE '%" . $search . "%' 
+        OR c.team_middle_name LIKE '%" . $search . "%')
+    ORDER BY c.team_first_name ASC;
     ";
     } else {
         $query = "
-        SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, c.col_company_city, c.col_company_Id, c.team_nationality, c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
-        FROM tbl_general_team_form c LEFT JOIN tbl_team_status a ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 AND a.col_approval = 'Approved' AND CURDATE() BETWEEN a.col_startDate AND a.col_endDate 
-        WHERE (a.uryyTteamoeSS4 IS NULL AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "') ORDER BY c.team_first_name ASC;
+    SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, 
+           c.col_company_city, c.col_company_Id, c.team_nationality, 
+           c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
+    FROM tbl_general_team_form c 
+    LEFT JOIN tbl_team_status a 
+        ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 
+        AND a.col_approval = 'Approved'
+        AND a.col_startDate < CURDATE() 
+        AND (a.col_endDate > CURDATE() OR a.col_endDate = 'TFN')
+    WHERE a.uryyTteamoeSS4 IS NULL 
+    AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
+    ORDER BY c.team_first_name ASC;
     ";
     }
     $result = mysqli_query($conn, $query);
@@ -94,16 +115,37 @@ if ($varGetAllData == $varCookieCity) {
     if (isset($_POST["query"])) {
         $search = mysqli_real_escape_string($conn, $_POST["query"]);
         $query = "
-        SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, c.col_company_city, c.col_company_Id, c.team_nationality, c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
-        FROM tbl_general_team_form c LEFT JOIN tbl_team_status a ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 AND a.col_approval = 'Approved' AND CURDATE() BETWEEN a.col_startDate AND a.col_endDate 
-        WHERE (a.uryyTteamoeSS4 IS NULL AND c.col_company_city = '" . $_COOKIE["companyCity"] . "' AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
-        AND c.team_first_name LIKE '%" . $search . "%' OR c.team_last_name LIKE '%" . $search . "%' OR c.team_middle_name LIKE '%" . $search . "%');
-    ";
+    SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, 
+           c.col_company_city, c.col_company_Id, c.team_nationality, 
+           c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
+    FROM tbl_general_team_form c 
+    LEFT JOIN tbl_team_status a 
+        ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 
+        AND a.col_approval = 'Approved'
+        AND a.col_startDate < CURDATE() 
+        AND (a.col_endDate > CURDATE() OR a.col_endDate = 'TFN')
+    WHERE a.uryyTteamoeSS4 IS NULL 
+    AND c.col_company_city = '" . $_COOKIE["companyCity"] . "' 
+    AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
+    AND (c.team_first_name LIKE '%" . $search . "%' 
+        OR c.team_last_name LIKE '%" . $search . "%' 
+        OR c.team_middle_name LIKE '%" . $search . "%')
+    ORDER BY c.team_first_name ASC;
+";
     } else {
         $query = "
-        SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, c.col_company_city, c.col_company_Id, c.team_nationality, c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
-        FROM tbl_general_team_form c LEFT JOIN tbl_team_status a ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 AND a.col_approval = 'Approved' AND CURDATE() BETWEEN a.col_startDate AND a.col_endDate 
-        WHERE (a.uryyTteamoeSS4 IS NULL AND c.col_company_city = '" . $_COOKIE["companyCity"] . "' AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "') ORDER BY c.team_first_name ASC;
+    SELECT c.team_first_name, c.team_last_name, c.team_date_of_birth, 
+           c.col_company_city, c.col_company_Id, c.team_nationality, 
+           c.team_primary_phone, c.team_city, c.uryyTteamoeSS4 
+    FROM tbl_general_team_form c 
+    LEFT JOIN tbl_team_status a 
+        ON c.uryyTteamoeSS4 = a.uryyTteamoeSS4 
+        AND a.col_approval = 'Approved'
+        AND a.col_startDate < CURDATE() 
+        AND (a.col_endDate > CURDATE() OR a.col_endDate = 'TFN')
+    WHERE a.uryyTteamoeSS4 IS NULL 
+    AND c.col_company_Id = '" . $_SESSION['usr_compId'] . "' 
+    ORDER BY c.team_first_name ASC;
     ";
     }
     $result = mysqli_query($conn, $query);

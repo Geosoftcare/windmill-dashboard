@@ -36,15 +36,17 @@ if (isset($_POST['btnSubmitform'])) {
 
     $password = hash('sha256', $pass); // password hashing using SHA256
 
-    $res = mysqli_query($conn, "SELECT my_city, col_company_Id, user_email_address, user_password FROM tbl_goesoft_users 
-    WHERE user_email_address='$email' ");
+    $res = mysqli_query($conn, "SELECT * FROM tbl_goesoft_users WHERE user_email_address='$email' ");
     $row = mysqli_fetch_array($res);
     $count = mysqli_num_rows($res); // if uname/pass correct it returns must be 1 row
 
     if ($count == 1 && $row['user_password'] == $password) {
       $_SESSION['usr_compId'] = $row['col_company_Id'];
+      $_SESSION['usr_userName'] = $row['user_fullname'];
+      $_SESSION['usr_compName'] = $row['company_name'];
       $_SESSION['usr_email'] = $row['user_email_address'];
       $_SESSION['usr_city'] = $row['my_city'];
+      $_SESSION['usr_specId'] = $row['user_special_Id'];
       header("Location: ./checking-email-verification");
     } else {
       echo "
